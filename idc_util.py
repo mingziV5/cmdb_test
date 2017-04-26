@@ -35,7 +35,8 @@ def update_idc_by_id(idc_id,idc_name,idc_address,idc_contacts):
     mysql_util(sql)
 
 def get_srvlist():
-    sql = 'select * from servers'
+    #sql = 'select * from servers'
+    sql = 'select s.id,s.ip,s.hostname,s.username,s.password,s.idc_id,s.remarks,s.create_time,i.name from idc i,servers s where s.idc_id = i.id'
     srv_list = mysql_util(sql)
     return srv_list
 
