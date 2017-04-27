@@ -10,6 +10,10 @@ import json
 cmdb_test = Flask(__name__)
 cmdb_test.secret_key = 'secriet_key'
 
+@cmdb_test.route('/layout')
+def layout():
+    return render_template('layout.html')
+
 @cmdb_test.route('/')
 def index():
     return render_template('index.html')

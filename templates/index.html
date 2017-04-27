@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +14,12 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-    <!--
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    -->
       <a class="navbar-brand" href="#">CMDB_TEST</a>
     </div>
 
@@ -40,6 +40,7 @@
 </nav>
 
 <div class="container">
+-->
 <!--
 	<div class="row">
 		<button type="button" class="btn btn-primary btn-sx" data-toggle="modal" data-target="#myModal">
@@ -47,6 +48,8 @@
 		</button>
 	<div>
 -->
+{% block body %}
+<div class="container">
 	<div class="row">
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
@@ -146,8 +149,7 @@
         </div>
     <div>
 <!-- end 修改idc -->
-
-    <div class="row" style="margin: 50px">
+    <div class="row">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr><th>idc_id</th><th>idc_name</th><th>address</th><th>contacts</th><th>action</th></tr>
@@ -157,9 +159,14 @@
         </table>
     </div>
 </div>
+{% endblock %}
+<!--
+</div>
 <script type="text/javascript" src="/static/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/sweetalert.min.js"></script>
+-->
+{% block js %}
 <script type="text/javascript">
 function initPage(){
 	$.getJSON('/idclist',function(res){
@@ -266,5 +273,6 @@ $(document).on('click','.del-btn',function(){
 initPage()
 //简单测试github
 </script>
+{% endblock %}
 </body>
 </html>
