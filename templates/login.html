@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
+
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="/static/flat-ui.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="login">
+        <div class="login-screen">
+          <div class="login-icon">
+            <h4>Welcome to <small>Cmdb_test</small></h4>
+            <h4 id='error_msg'></h4>
+          </div>
+        <form id='form_login'>
+          <div class="login-form">
+            <div class="form-group">
+              <input type="text" class="form-control login-field" value="" placeholder="Enter your name" name="username" />
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control login-field" value="" placeholder="Password" name="password" />
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="登陆">
+            <a class="login-link" href="#">Lost your password?</a>
+          </div>
+        </form>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+    <script src="/static/jquery-3.2.1.min.js"></script>
+    <script>
+        $('#form_login').on('submit',function(){
+            var formLoginStr = $('#form_login').serialize()
+            $.post('/login/login',formLoginStr,function(res){
+                if(res == 'ok'){
+                    location.href = '/'
+                } else {
+                    $('#error_msg').html(res)
+                }    
+            })
+            return false
+        })
+    </script>
+  </body>
+</html>
